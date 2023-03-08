@@ -1,4 +1,11 @@
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Rating } from '../../books/entities/rating.entity';
 
 @Entity({ name: 'users' })
 export class User {
@@ -27,6 +34,9 @@ export class User {
     select: false,
   })
   password: string;
+
+  @OneToMany(() => Rating, (rating) => rating.user)
+  ratings: Rating[];
 
   @BeforeInsert()
   checkFields() {

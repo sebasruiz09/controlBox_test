@@ -6,6 +6,7 @@ import { DatabaseService } from './databases/database.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HttpExceptionFilter } from './common/filters/exception.filter';
 import { APP_FILTER } from '@nestjs/core';
+import { BooksModule } from './books/books.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { APP_FILTER } from '@nestjs/core';
       useClass: DatabaseService,
     }),
     AuthModule,
+    BooksModule,
   ],
   providers: [
     DatabaseService,

@@ -7,7 +7,7 @@ export class signupDto {
   email: string;
 
   @Matches(
-    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>])(?=.*[a-z]).{8,}$/,
+    /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,}$/,
   )
   @IsString()
   password: string;

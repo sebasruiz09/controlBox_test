@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  UnauthorizedException,
+  BadRequestException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entities/users.entity';
@@ -6,6 +10,7 @@ import { signupDto } from './dto/signup.dto';
 import { cryptPassword, compareCrypt } from './helpers/bcrypt.helper';
 import { signinDto } from './dto/signin.dto';
 import { JwtService } from '@nestjs/jwt';
+import { Response, HttpError } from '../common/interfaces';
 
 @Injectable()
 export class AuthService {
@@ -15,14 +20,21 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  singUp = async ({ password, ...props }: signupDto): Promise<User> => {
+  singUp = async ({ password, ...props }: signupDto): Promise<Response> => {
     const info = this.userRepository.create({
       password: cryptPassword(password),
       ...props,
     });
-    const user = await this.userRepository.save(info);
-    delete user['password'];
-    return user;
+    try {
+      const user = await this.userRepository.save(info);
+      delete user['password'];
+      return {
+        status: 200,
+        message: 'user successfully registered',
+      };
+    } catch (err) {
+      throw new BadRequestException(err.driverError.detail as HttpError);
+    }
   };
 
   signIn = async (credentials: signinDto): Promise<any> => {

@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   standalone: true,
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.sass'],
+  styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent {}

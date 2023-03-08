@@ -15,7 +15,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix('ebooks/');
 
-  app.enableCors({ origin: '*', credentials: true });
+  app.enableCors();
 
   await app.listen(3000);
 }

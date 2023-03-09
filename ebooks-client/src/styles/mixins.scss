@@ -50,10 +50,10 @@ $breakpoint-XLarge: 1900px;
   border-radius: 5px;
   border: none;
   font-size: 12px;
+  color: #000;
 
   &:focus{
     border: none;
     outline: none;
-    color: #000;
   }
 }

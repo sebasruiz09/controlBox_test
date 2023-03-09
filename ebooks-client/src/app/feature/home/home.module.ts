@@ -5,15 +5,19 @@ import { HomeComponent } from './home.component';
 import { AuthService } from '../services/auth.service';
 import { BookCarouselComponent } from './components/book-carousel/book-carousel.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
+import { BookModalComponent } from './components/book-modal/book-modal.component';
 import { DragScrollModule } from 'ngx-drag-scroll';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     HomeComponent,
     BookCarouselComponent,
     BookCardComponent,
+    BookModalComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule, DragScrollModule],
+  imports: [ModalModule, CommonModule, HomeRoutingModule, DragScrollModule , ReactiveFormsModule],
   providers: [AuthService],
 })
 export class HomeModule {}

@@ -37,3 +37,17 @@ h5,
 h6 {
   font-family: "Inter", "Helvetica Neue", sans-serif;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+.modal-body{
+  padding: 0 !important;
+  pointer-events: all !important;
+}
+
+body > ngb-modal-window > div > div > app-book-modal {
+  background-color: rgba(0, 0, 0, 0.97);
+  border: none;
+  padding: 0;
+}

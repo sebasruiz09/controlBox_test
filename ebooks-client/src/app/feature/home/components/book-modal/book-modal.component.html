@@ -1,0 +1,40 @@
+<div class="modal-fade">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-body">
+      <div class="modalBook">
+        <section class="modalBook__left">
+          <picture>
+            <img src="{{ book?.volumeInfo?.imageLinks?.thumbnail }}" alt="" />
+          </picture>
+          <p>Autor : {{ book?.volumeInfo?.authors }}</p>
+          <p>Fecha : {{ book?.volumeInfo?.publishedDate }}</p>
+          <p>idioma : {{ book?.volumeInfo?.language }}</p>
+          <button>Comprar</button>
+        </section>
+        <section class="modalBook__right">
+          <p>titulo : {{ book?.volumeInfo?.title }}</p>
+          <p class="modalBook__sipnosis">
+            Sipnosis : {{ book?.volumeInfo?.description }}
+          </p>
+
+          <article class="modalBook__valorations">
+            <div class="modalBook__valorations_box">
+              <p>valoraciones</p>
+            </div>
+            <form [formGroup]="bookForm" (ngSubmit)="sendBookReview()">
+              <input
+                type="text"
+                formControlName="review"
+                placeholder="Send your review"
+              />
+              <button [disabled]="bookForm.invalid" type="submit">
+                enviar
+              </button>
+            </form>
+            <div class="modalBook__values"></div>
+          </article>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,6 +14,8 @@ export class BookCarouselComponent implements OnInit {
   books!: Item[];
 
   actions!: Item[];
+
+  isLoading = false;
   
   @Input() title! : any;
 
@@ -31,6 +33,7 @@ export class BookCarouselComponent implements OnInit {
       .subscribe({
         next: (values: Books) => {
           this.books = values.items;
+          this.isLoading = true;
         },
       });
   }

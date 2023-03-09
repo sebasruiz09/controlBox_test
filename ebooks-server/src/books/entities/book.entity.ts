@@ -12,7 +12,19 @@ export class Book {
     name: 'title',
     type: 'varchar',
   })
-  name: string;
+  title: string;
+
+  @Column({
+    name: 'author',
+    type: 'varchar',
+  })
+  author: string;
+
+  @Column({
+    name: 'description',
+    type: 'varchar',
+  })
+  description: string;
 
   @OneToMany(() => Rating, (rating) => rating.book)
   rating: Rating[];

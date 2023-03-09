@@ -9,10 +9,10 @@ export class Rating {
   id: string;
 
   @Column({
-    name: 'value',
-    type: 'smallint',
+    name: 'review',
+    type: 'varchar',
   })
-  value: number;
+  review: string;
 
   @ManyToOne(() => User, (user) => user.ratings)
   user: User;

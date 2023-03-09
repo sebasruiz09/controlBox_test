@@ -30,6 +30,7 @@ export class AuthService {
         next: (response) => {
           if (response.token) {
             window.sessionStorage.setItem('token', response['token']);
+            window.sessionStorage.setItem('id' , response.id);
             this.route.navigate(['/home']);
           }
         },

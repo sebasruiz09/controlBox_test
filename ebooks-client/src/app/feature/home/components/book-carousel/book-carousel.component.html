@@ -5,8 +5,10 @@
     [scrollbar-hidden]="true"
     [drag-scroll-y-disabled]="true"
   >
-    <article *ngFor="let item of books" class="content__carousel">
-      <app-book-card [book]="item"></app-book-card>
-    </article>
+    <ng-container *ngIf="isLoading">
+      <article *ngFor="let item of books" class="content__carousel">
+        <app-book-card [book]="item"></app-book-card>
+      </article>
+    </ng-container>
   </drag-scroll>
 </div>

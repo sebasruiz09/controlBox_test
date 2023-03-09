@@ -1,3 +1,9 @@
-<section>
-    <
+<section class="home">
+  <article *ngFor="let item of booksArray">
+    <app-book-carousel
+      class="carousel"
+      [title]="item[0]"
+      [URL]="item[1]"
+    ></app-book-carousel>
+  </article>
 </section>

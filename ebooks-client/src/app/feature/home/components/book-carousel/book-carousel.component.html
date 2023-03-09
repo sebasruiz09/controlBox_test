@@ -1,0 +1,12 @@
+<div class="books">
+  <h3>{{ title }}</h3>
+  <drag-scroll
+    class="books__content"
+    [scrollbar-hidden]="true"
+    [drag-scroll-y-disabled]="true"
+  >
+    <article *ngFor="let item of books" class="content__carousel">
+      <app-book-card [book]="item"></app-book-card>
+    </article>
+  </drag-scroll>
+</div>

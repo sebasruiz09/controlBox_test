@@ -13,7 +13,7 @@ import { passwordRegex } from '../../constants/constants';
   standalone: true,
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+  styleUrls: ['../signin/signin.component.scss'],
   imports: [ReactiveFormsModule],
   providers: [HttpAdapter],
 })

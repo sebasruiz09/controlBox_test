@@ -30,8 +30,12 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles/styles.scss"],
-            "scripts": []
+            "styles": [
+              "src/styles/styles.scss",
+              "src/styles/variables.scss"
+            ],
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {

@@ -1,32 +1,40 @@
-<section>
-  <form [formGroup]="signupForm" (ngSubmit)="validateForm()">
+<section class="overlay">
+  <form [formGroup]="signupForm" (ngSubmit)="validateForm()" class="signForm">
+    <h1>Sign up</h1>
     <div>
-      <label for="user">username</label>
+      <label for="user">Username</label>
       <input
         type="text"
         id="user"
-        placeholder="username"
+        placeholder="Username"
         formControlName="name"
+        autocomplete="off"
       />
     </div>
     <div>
-      <label for="email">email</label>
+      <label for="email">Email</label>
       <input
         type="email"
         id="email"
-        placeholder="email"
+        placeholder="Email"
         formControlName="email"
+        autocomplete="off"
       />
     </div>
     <div>
-      <label for="password">password</label>
+      <label for="password">Password</label>
       <input
         type="password"
         id="password"
-        placeholder="password"
+        placeholder="Password"
         formControlName="password"
+        autocomplete="off"
       />
     </div>
+    <p class="signForm__desc">
+      Esta página está protegida por Google reCAPTCHA para comprobar que no eres
+      un robot. Más info.
+    </p>
     <button type="submit" [disabled]="signupForm.invalid">Sign up</button>
   </form>
 </section>

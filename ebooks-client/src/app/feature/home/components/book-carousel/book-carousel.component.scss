@@ -1,0 +1,19 @@
+.books {
+  background-color: #000;
+  color: #fff;
+  padding: 5px 20px;
+
+  > h3 {
+    margin: 5px 0;
+    font-size: 17px;
+   font-weight: 300;
+  }
+
+  &__content {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    height: 300px;
+    gap: 10px;
+  }
+}

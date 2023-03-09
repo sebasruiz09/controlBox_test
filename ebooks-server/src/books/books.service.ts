@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { Rating } from './entities';
 import { Response } from '../common/interfaces/response.inteface';
 import { Review } from 'src/common/interfaces/review.interface';
+import { User } from 'src/auth/entities/users.entity';
 
 @Injectable()
 export class BooksService {
@@ -14,7 +15,7 @@ export class BooksService {
     private readonly bookRepository: Repository<Book>,
 
     @InjectRepository(Rating)
-    private readonly reatingRepository: Repository<Rating>,
+    private readonly ratingRepository: Repository<Rating>,
   ) {}
 
   async createBook(book: BookDto): Promise<Response> {
@@ -33,7 +34,6 @@ export class BooksService {
         review,
       });
     }
-    console.log(book);
     this.allReviews(id);
     return this.createReview({
       user,
@@ -43,8 +43,8 @@ export class BooksService {
   }
 
   private async createReview(review): Promise<Response> {
-    const newReview = this.reatingRepository.create(review);
-    await this.reatingRepository.save(newReview);
+    const newReview = this.ratingRepository.create(review);
+    await this.ratingRepository.save(newReview);
     return {
       status: 200,
       message: 'rating created',
@@ -56,23 +56,13 @@ export class BooksService {
   }
 
   async allReviews(id: string): Promise<Review[]> {
-    const reviews = await this.reatingRepository.find({
-      relations: {
-        user: true,
-      },
-      select: {
-        review: true,
-        user: {
-          name: true,
-        },
-      },
-      where: {
-        book: {
-          id,
-        },
-      },
-    });
-    console.log(reviews);
-    return reviews;
+    const query = this.ratingRepository
+      .createQueryBuilder('rating')
+      .select('users.name', 'name')
+      .addSelect('rating.review', 'review')
+      .innerJoin('users', 'users', 'users.id = rating.userId')
+      .where('rating.bookId = :bookId', { bookId: id })
+      .getRawMany();
+    return query;
   }
 }

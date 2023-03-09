@@ -26,6 +26,6 @@ export class Book {
   })
   description: string;
 
-  @OneToMany(() => Rating, (rating) => rating.book)
+  @OneToMany(() => Rating, (rating) => rating.book, {})
   rating: Rating[];
 }

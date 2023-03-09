@@ -17,7 +17,7 @@
             Sipnosis : {{ book?.volumeInfo?.description }}
           </p>
 
-          <article class="modalBook__valorations">
+      
             <div class="modalBook__valorations_box">
               <p>valoraciones</p>
             </div>
@@ -31,8 +31,10 @@
                 enviar
               </button>
             </form>
-            <div class="modalBook__values"></div>
-          </article>
+            <div class="modalBook__values">
+              <p *ngFor="let item of reviews | async">{{ item.name }} : {{item.review}}</p>
+            </div>
+      
         </section>
       </div>
     </div>

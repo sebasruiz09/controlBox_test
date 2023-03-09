@@ -20,4 +20,8 @@ export class BookService {
       })
     })
   }
+
+  getReviews(url : string) : Observable<any> {
+    return this.httpAdapter.get(url);
+  }
 }

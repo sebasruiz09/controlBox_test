@@ -6,6 +6,7 @@ import { BookService } from '../../../services/books.service';
 import { Review } from '../../../interfaces/review.interface';
 import { environment } from 'src/environment/environment';
 import { Observable } from 'rxjs';
+import { ToHttpsPipe } from 'src/app/feature/pipes/to-https.pipe';
 
 @Component({
   selector: 'app-book-modal',
@@ -15,7 +16,7 @@ import { Observable } from 'rxjs';
 export class BookModalComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
-    private readonly bookService: BookService
+    private readonly bookService: BookService,
   ) {}
 
   private readonly BOOKS_URL: string = `${environment.API_URL}books/review`;
@@ -66,8 +67,8 @@ export class BookModalComponent implements OnInit {
       review: this.bookForm.value['review'],
     };
     this.bookService.sendValoration(this.BOOKS_URL, book).subscribe({
-      next : (() => this.getReviews()),
-    })
+      next: () => this.getReviews(),
+    });
     this.bookForm.reset();
   }
 }

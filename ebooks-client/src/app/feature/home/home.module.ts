@@ -10,6 +10,7 @@ import { DragScrollModule } from 'ngx-drag-scroll';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeGuard } from '../guards/home.guard';
+import { ToHttpsPipe } from '../pipes/to-https.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HomeGuard } from '../guards/home.guard';
     BookCarouselComponent,
     BookCardComponent,
     BookModalComponent,
+    ToHttpsPipe
   ],
   imports: [
     ModalModule,
@@ -25,6 +27,6 @@ import { HomeGuard } from '../guards/home.guard';
     DragScrollModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService , HomeGuard],
+  providers: [AuthService, HomeGuard],
 })
 export class HomeModule {}

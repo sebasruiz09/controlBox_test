@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
+import { HomeGuard } from '../guards/home.guard';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+        canActivate : [HomeGuard]
       },
       {
         path: '**',

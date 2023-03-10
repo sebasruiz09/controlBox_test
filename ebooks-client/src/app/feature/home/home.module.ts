@@ -9,6 +9,7 @@ import { BookModalComponent } from './components/book-modal/book-modal.component
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeGuard } from '../guards/home.guard';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     BookCardComponent,
     BookModalComponent,
   ],
-  imports: [ModalModule, CommonModule, HomeRoutingModule, DragScrollModule , ReactiveFormsModule],
-  providers: [AuthService],
+  imports: [
+    ModalModule,
+    CommonModule,
+    HomeRoutingModule,
+    DragScrollModule,
+    ReactiveFormsModule,
+  ],
+  providers: [AuthService , HomeGuard],
 })
 export class HomeModule {}

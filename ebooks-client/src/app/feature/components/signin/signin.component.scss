@@ -54,5 +54,10 @@
     margin: 10px;
     color: rgba(120, 120, 120);
     font-size: 10px;
+
+    > a {
+      color: #3d7db2;
+      text-decoration: underline;
+    }
   }
 }

@@ -6,20 +6,18 @@
           <picture>
             <img src="{{ book?.volumeInfo?.imageLinks?.thumbnail }}" alt="" />
           </picture>
-          <p>Autor : {{ book?.volumeInfo?.authors }}</p>
-          <p>Fecha : {{ book?.volumeInfo?.publishedDate }}</p>
-          <p>idioma : {{ book?.volumeInfo?.language }}</p>
-          <button>Comprar</button>
+          <p>Author : {{ book?.volumeInfo?.authors }}</p>
+          <p>Date: {{ book?.volumeInfo?.publishedDate }}</p>
+          <p>Language: {{ book?.volumeInfo?.language }}</p>
+          <button>Buy</button>
         </section>
         <section class="modalBook__right">
-          <p>titulo : {{ book?.volumeInfo?.title }}</p>
+          <p>Title : {{ book?.volumeInfo?.title }}</p>
           <p class="modalBook__sipnosis">
-            Sipnosis : {{ book?.volumeInfo?.description }}
+            Sypnosis : {{ book?.volumeInfo?.description }}
           </p>
-
-      
             <div class="modalBook__valorations_box">
-              <p>valoraciones</p>
+              <p>Ratings</p>
             </div>
             <form [formGroup]="bookForm" (ngSubmit)="sendBookReview()">
               <input
@@ -28,11 +26,11 @@
                 placeholder="Send your review"
               />
               <button [disabled]="bookForm.invalid" type="submit">
-                enviar
+                Send
               </button>
             </form>
             <div class="modalBook__values">
-              <p *ngFor="let item of reviews | async">{{ item.name }} : {{item.review}}</p>
+              <p *ngFor="let item of reviews">{{ item.name }} : {{item.review}}</p>
             </div>
       
         </section>

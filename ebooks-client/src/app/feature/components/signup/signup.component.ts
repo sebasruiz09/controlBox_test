@@ -8,24 +8,27 @@ import {
   Validators,
 } from '@angular/forms';
 import { passwordRegex } from '../../constants/constants';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['../signin/signin.component.scss'],
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterModule],
   providers: [HttpAdapter],
 })
 export class SignupComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private route: Router
   ) {}
 
   signupForm!: FormGroup;
 
   ngOnInit(): void {
+    if (this.authService.isloggedIn()) this.route.navigate(['home']);
     this.buildFrom();
   }
 

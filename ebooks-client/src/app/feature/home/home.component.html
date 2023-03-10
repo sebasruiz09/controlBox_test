@@ -1,4 +1,16 @@
 <section class="home">
+  <header class="home__header">
+    <form [formGroup]="findForm">
+      <input type="text" formControlName="search" placeholder="What do you want to search today ?" />
+    </form>
+  </header>
+  <article *ngIf="search && showSearch">
+    <app-book-carousel
+      class="carousel"
+      [title]="search[0]"
+      [URL]="search[1]"
+    ></app-book-carousel>
+  </article>
   <article *ngFor="let item of booksArray">
     <app-book-carousel
       class="carousel"

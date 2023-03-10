@@ -13,12 +13,8 @@ export class BookService {
     return this.httpAdapter.get<Books>(url);
   }
 
-  sendValoration(url: string , body : Review){
-    this.httpAdapter.post(url , body).subscribe({
-      next : ((values) => {
-        console.log(values);
-      })
-    })
+  sendValoration(url: string , body : Review) : Observable<any>{
+    return this.httpAdapter.post(url , body);
   }
 
   getReviews(url : string) : Observable<any> {

@@ -7,23 +7,26 @@ import {
 } from '@angular/forms';
 import { passwordRegex } from '../../constants/constants';
 import { AuthService } from '../../services/auth.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss'],
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule , RouterModule],
 })
 export class SigninComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private route: Router
   ) {}
 
   signinForm!: FormGroup;
 
   ngOnInit(): void {
+    if (this.authService.isloggedIn()) this.route.navigate(['home']);
     this.buildForm();
   }
 
@@ -35,6 +38,6 @@ export class SigninComponent implements OnInit {
   }
 
   validateForm(): void {
-    if(this.signinForm.valid) this.authService.signIn(this.signinForm.value)
+    if (this.signinForm.valid) this.authService.signIn(this.signinForm.value);
   }
 }

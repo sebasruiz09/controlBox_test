@@ -29,7 +29,7 @@ export class BookModalComponent implements OnInit {
     this.myModal?.hide();
   }
 
-  reviews!: Observable<any>;
+  reviews!: { name: string; review: string }[];
 
   bookForm!: FormGroup;
 
@@ -39,9 +39,13 @@ export class BookModalComponent implements OnInit {
   }
 
   getReviews(): void {
-    this.reviews = this.bookService.getReviews(
-      `${this.REVIEWS_URL}/${this.book?.id}`
-    );
+    this.bookService
+      .getReviews(`${this.REVIEWS_URL}/${this.book?.id}`)
+      .subscribe({
+        next: (values) => {
+          this.reviews = values;
+        },
+      });
   }
 
   buildFrom(): void {
@@ -61,6 +65,9 @@ export class BookModalComponent implements OnInit {
       description: info?.description,
       review: this.bookForm.value['review'],
     };
-    this.bookService.sendValoration(this.BOOKS_URL, book);
+    this.bookService.sendValoration(this.BOOKS_URL, book).subscribe({
+      next : (() => this.getReviews()),
+    })
+    this.bookForm.reset();
   }
 }

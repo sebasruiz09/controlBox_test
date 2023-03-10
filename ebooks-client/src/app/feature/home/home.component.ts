@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   private readonly books: Record<string, string> = {
     'Most popular books': `${this.BOOKS_URL}subject:fiction&orderBy=newest&maxResults=30`,
     'Action and more action': `${this.BOOKS_URL}subject:action&maxResults=30`,
-    'a little bit of history': `${this.BOOKS_URL}subject:history&maxResults=30`,
+    'A little bit of history': `${this.BOOKS_URL}subject:history&maxResults=30`,
     'Rrecommended for you': `${this.BOOKS_URL}news:any&maxResults=30`,
     "Let's get to know our country": `${this.BOOKS_URL}Colombia:any&maxResults=30`,
   };

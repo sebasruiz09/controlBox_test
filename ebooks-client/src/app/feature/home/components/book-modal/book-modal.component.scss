@@ -52,6 +52,7 @@
       height: 20em;
 
       @include screen(modal) {
+        max-width: none;
         margin: 0;
         width: 100%;
         height: 350px;

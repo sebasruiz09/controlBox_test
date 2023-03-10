@@ -7,6 +7,7 @@ import { Review } from '../../../interfaces/review.interface';
 import { environment } from 'src/environment/environment';
 import { Observable } from 'rxjs';
 import { ToHttpsPipe } from 'src/app/feature/pipes/to-https.pipe';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-book-modal',
@@ -17,6 +18,7 @@ export class BookModalComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private readonly bookService: BookService,
+    private ngModal: NgbModal
   ) {}
 
   private readonly BOOKS_URL: string = `${environment.API_URL}books/review`;
@@ -27,6 +29,7 @@ export class BookModalComponent implements OnInit {
   @Input() book?: Item;
 
   public hide(): void {
+    console.log('funciona');
     this.myModal?.hide();
   }
 
@@ -47,6 +50,11 @@ export class BookModalComponent implements OnInit {
           this.reviews = values;
         },
       });
+  }
+
+  closeModal(){
+    this.showModal ? (this.showModal = false) : (this.showModal = true);
+    this.ngModal.dismissAll();
   }
 
   buildFrom(): void {

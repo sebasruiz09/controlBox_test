@@ -1,28 +1,65 @@
-.home{
+@use "src/styles/mixins.scss" as *;
+
+.home {
+  background: #000;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+
+  &__header {
+    padding: 20px;
     background: #000;
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
+    display: flex;
+    justify-content: space-between;
 
-    &__header{
-        padding: 20px;
+    > form {
+      > input {
+        padding: 7px 10px;
         background: #000;
+        align-items: center;
+        width: 270px;
+        color: #fff;
+        border: solid 1px #fff;
+        display: flex;
+        flex-direction: column;
 
-        > form > input {
-            padding: 7px 10px;
-            width: 500px;
-            background: #000;
-            color: #FFF;
-            border: solid 1px #FFF;
-
-
-            &:focus,&:active{
-                box-shadow: none;
-            }
+        @include screen(small) {
+          width: 500px;
         }
+
+        &:focus,
+        &:active {
+          box-shadow: none;
+        }
+      }
+      > div {
+        height: 14px;
+
+        > small {
+          color: #cbcbcb;
+          font-size: 14px;
+          
+          @include screen(small){
+              font-size: 16px;
+          }
+        }
+      }
     }
+
+    &_logo {
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 0 10px;
+
+      &:hover {
+        transform: scale(101%);
+      }
+    }
+  }
 }
 
-.carousel{
-    overflow-x: hidden;
+.carousel {
+  overflow-x: hidden;
 }

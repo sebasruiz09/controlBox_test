@@ -5,6 +5,7 @@ import { environment } from '../../../environment/environment.prod';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { debounceTime, filter, map } from 'rxjs';
 import { HttpAdapter } from '../../core/adapters/http.adapter';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { HttpAdapter } from '../../core/adapters/http.adapter';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder , private router : Router) {}
 
   private readonly BOOKS_URL: string = environment.BOOKS_URL;
 
@@ -62,5 +63,10 @@ export class HomeComponent implements OnInit {
         'From your search',
         `${this.BOOKS_URL}${query}&maxResults=30`,
       ];
+  }
+
+  clearSession() : void {
+    sessionStorage.clear();
+    this.router.navigate(['signin'])
   }
 }

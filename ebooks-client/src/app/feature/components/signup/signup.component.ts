@@ -10,13 +10,14 @@ import {
 import { passwordRegex } from '../../constants/constants';
 import { Router, RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['../signin/signin.component.scss'],
-  imports: [ReactiveFormsModule, RouterModule, ToastrModule],
+  imports: [ReactiveFormsModule, RouterModule, ToastrModule , CommonModule],
   providers: [HttpAdapter],
 })
 export class SignupComponent implements OnInit {

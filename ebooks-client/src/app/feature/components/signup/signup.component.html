@@ -10,6 +10,16 @@
         formControlName="name"
         autocomplete="off"
       />
+      <div>
+        <small
+          *ngIf="
+            signupForm.get('name')?.touched &&
+            signupForm.get('name')?.invalid
+          "
+        >
+          Username is required
+        </small>
+      </div>
     </div>
     <div>
       <label for="email">Email</label>
@@ -20,6 +30,15 @@
         formControlName="email"
         autocomplete="off"
       />
+      <div>
+        <small
+          *ngIf="
+            signupForm.get('email')?.touched && signupForm.get('email')?.invalid
+          "
+        >
+          Your email is not valid
+        </small>
+      </div>
     </div>
     <div>
       <label for="password">Password</label>
@@ -30,9 +49,20 @@
         formControlName="password"
         autocomplete="off"
       />
+      <div>
+        <small
+          *ngIf="
+            signupForm.get('password')?.touched &&
+            signupForm.get('password')?.invalid
+          "
+        >
+          Your password must be at least a,1,@
+        </small>
+      </div>
     </div>
     <p class="signForm__desc">
-      This page is protected by Google reCAPTCHA to verify that you are not a robot. a robot. More info.
+      This page is protected by Google reCAPTCHA to verify that you are not a
+      robot. a robot. More info.
     </p>
     <p class="signForm__desc">
       already have an account ? <a routerLink="/signin">log in</a>

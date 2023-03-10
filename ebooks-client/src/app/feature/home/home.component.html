@@ -1,8 +1,21 @@
 <section class="home">
   <header class="home__header">
     <form [formGroup]="findForm">
-      <input type="text" formControlName="search" placeholder="What do you want to search today ?" />
+      <input
+        type="text"
+        formControlName="search"
+        placeholder="What do you want to search today ?"
+      />
+      <div>
+        <small *ngIf="findForm.get('search')?.touched && !showSearch"
+          >You must enter a keyword of at least 4 digits </small
+        >
+      </div>
     </form>
+
+    <div class="home__header_logo">
+      <img src="../../../assets/exit.svg" alt="exit" (click)="clearSession()"/>
+    </div>
   </header>
   <article *ngIf="search && showSearch">
     <app-book-carousel

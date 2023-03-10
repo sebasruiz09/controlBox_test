@@ -10,6 +10,15 @@
         formControlName="email"
         autocomplete="off"
       />
+      <div>
+        <small
+          *ngIf="
+            signinForm.get('email')?.touched && signinForm.get('email')?.invalid
+          "
+        >
+          Your email is not valid
+        </small>
+      </div>
     </div>
     <div>
       <label for="password">Password</label>
@@ -20,6 +29,16 @@
         placeholder="Password"
         formControlName="password"
       />
+      <div>
+        <small
+          *ngIf="
+            signinForm.get('password')?.touched &&
+            signinForm.get('password')?.invalid
+          "
+        >
+          Your password must be at least a,1,@
+        </small>
+      </div>
     </div>
     <button type="submit" [disabled]="signinForm.invalid">Sign in</button>
     <p class="signForm__desc">

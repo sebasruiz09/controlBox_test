@@ -8,13 +8,14 @@ import {
 import { passwordRegex } from '../../constants/constants';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss'],
-  imports: [ReactiveFormsModule , RouterModule],
+  imports: [ReactiveFormsModule , RouterModule , CommonModule],
 })
 export class SigninComponent implements OnInit {
   constructor(

@@ -25,6 +25,15 @@
     > input {
       @extend %inputBlock;
     }
+
+    > div {
+      margin: 5px 0 12px 0;
+      height: 20px;
+
+      > small {
+        color: #b8b8b8;
+      }
+    }
   }
 
   button[type="submit"] {

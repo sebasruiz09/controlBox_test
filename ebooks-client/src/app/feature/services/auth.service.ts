@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr/public_api';
 import { HttpAdapter } from 'src/app/core/adapters/http.adapter';
 import { environment } from 'src/environment/environment';
 import { User } from '../interfaces';

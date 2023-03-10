@@ -15,6 +15,7 @@ $breakpoint-med-small: 992px;
 $breakpoint-med: 1200px;
 $breakpoint-large: 1400px;
 $breakpoint-XLarge: 1900px;
+$breakpoint-modal: 991px;
 
 @mixin screen($size, $type: min, $pixels: $breakpoint-small) {
   @if $size == "small" {
@@ -31,6 +32,10 @@ $breakpoint-XLarge: 1900px;
     }
   } @else if $size == "large" {
     @media screen and (#{$type}-width: $breakpoint-large) {
+      @content;
+    }
+  } @else if $size == "modal" {
+    @media screen and (#{$type}-width: $breakpoint-modal) {
       @content;
     }
   } @else if $size == "custom" {

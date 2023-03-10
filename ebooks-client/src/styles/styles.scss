@@ -51,3 +51,10 @@ body > ngb-modal-window > div > div > app-book-modal {
   border: none;
   padding: 0;
 }
+
+body > app-root > app-home > section > article > app-book-carousel > div > drag-scroll > div {
+  overflow-x: auto !important;
+  @include screen(small){
+    overflow-x: hidden !important;
+  }
+}

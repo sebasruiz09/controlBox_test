@@ -25,6 +25,7 @@
     "i18n": "^0.15.1",
     "ngx-bootstrap": "^10.2.0",
     "ngx-drag-scroll": "^15.0.0",
+    "ngx-toastr": "^16.1.0",
     "normalize.css": "^8.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
